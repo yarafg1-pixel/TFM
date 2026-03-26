@@ -1,0 +1,119 @@
+# 🎓 TFM – Modelo Predictivo para Atracción, Matriculación y Retención de Estudiantes en Posgrados Internacionales
+
+## 📌 Descripción del Proyecto
+
+El presente Trabajo Fin de Máster (TFM) tiene como objetivo desarrollar un modelo predictivo que permita analizar y anticipar el comportamiento de los estudiantes en educación superior, específicamente en programas de posgrado internacionales.
+
+El proyecto se centra en tres procesos clave:
+
+- Matriculación
+- Retención y
+- Abandono académico
+
+A partir del uso de datos reales, se busca generar información relevante para la toma de decisiones estratégicas en instituciones educativas.
+
+---
+
+## 🎯 Objetivos
+
+### Objetivo general
+Desarrollar un modelo predictivo que permita estimar la probabilidad de abandono o éxito académico de estudiantes en educación superior.
+
+### Objetivos específicos
+
+- Identificar variables que influyen en la deserción estudiantil
+- Analizar patrones de matriculación en programas de posgrado
+- Evaluar el impacto de factores académicos, socioeconómicos e institucionales
+- Generar insights para mejorar la retención estudiantil
+
+---
+
+## 📊 Dataset
+
+El dataset utilizado proviene del:
+
+- UCI Machine Learning Repository  
+- Dataset: *Predict Students Dropout and Academic Success*
+
+Este dataset contiene información relevante sobre:
+
+- Características demográficas (edad, nacionalidad, estado civil)
+- Variables académicas (notas, tipo de curso, calificaciones previas)
+- Condiciones socioeconómicas
+- Resultado final del estudiante (Target):
+  - Dropout
+  - Graduate
+  - Enrolled
+
+---
+
+## 🗄️ Modelo de Base de Datos
+
+Se diseñó un modelo relacional en MySQL para estructurar y almacenar la información del dataset.
+
+### Tabla principal
+
+**students_raw**
+
+Incluye variables como:
+
+- Marital_status
+- Application_mode
+- Course
+- Admission_grade
+- Previous_qualification
+- Daytime_evening_attendance
+- Target
+
+Este modelo permite organizar los datos para su posterior análisis y modelado predictivo.
+
+---
+
+## ⚙️ Implementación en SQL
+
+El archivo:
+
+👉 `Modelo de datos_Modulo 6.sql`
+
+incluye:
+
+- Creación de la tabla
+- Definición de tipos de datos
+- Estructura relacional del dataset
+
+---
+
+## 📈 Análisis Exploratorio (EDA)
+
+Se realizó un análisis exploratorio de datos para:
+
+- Identificar distribuciones de variables
+- Detectar valores atípicos
+- Analizar correlaciones entre variables
+- Evaluar la relación entre variables independientes y el Target
+
+Este análisis permite comprender mejor los factores asociados al abandono estudiantil.
+
+---
+
+## 🧮 Consultas SQL realizadas
+
+Ejemplos de consultas utilizadas:
+
+```sql
+-- Total de registros
+SELECT COUNT(*) FROM students_raw;
+
+-- Distribución del abandono
+SELECT Target, COUNT(*) 
+FROM students_raw
+GROUP BY Target;
+
+-- Promedio de nota de admisión
+SELECT AVG(Admission_grade) 
+FROM students_raw;
+
+-- Análisis por tipo de asistencia
+SELECT Daytime_evening_attendance, COUNT(*)
+FROM students_raw
+GROUP BY Daytime_evening_attendance;
